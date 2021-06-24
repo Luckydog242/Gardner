@@ -15,5 +15,8 @@ namespace GardnerWebApplication.Data
         }
 
         public DbSet<Blog> Blog { get; set; }
+        public DbSet<Author> Author { get; set; }
+        public DbSet<Alias> Alias { get; set; }
+
     }
 }

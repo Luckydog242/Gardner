@@ -29,15 +29,6 @@ namespace GardnerWebApplication
 
             services.AddDbContext<MvcBlogContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("MvcBlogContext")));
-
-            services.AddDbContext<MvcAuthorContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("MvcAuthorContext")));
-
-            services.AddDbContext<MvcAliasContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("MvcAliasContext")));
-
-            services.AddDbContext<GardnerWebApplicationContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("GardnerWebApplicationContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
