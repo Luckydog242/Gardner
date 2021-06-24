@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GardnerWebApplication.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace GardnerWebApplication
 {
@@ -24,6 +26,9 @@ namespace GardnerWebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<MvcBlogContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("MvcBlogContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
