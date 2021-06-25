@@ -14,13 +14,13 @@ namespace GardnerWebApplication.Models
         public string Title { get; set; }
 
         [Display(Name = "First Name")]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z]\-*$")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z-]*$")]
         [Required]
         [StringLength(50)]
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z]\-*$")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z-]*$")]
         [Required]
         [StringLength(50)]
         public string LastName { get; set; }

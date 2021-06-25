@@ -11,19 +11,20 @@ namespace GardnerWebApplication.Models
     {
         public int Id { get; set; }
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z-\s]*$")]
+        [Display(Name = "Alias")]
+        [RegularExpression(@"^[a-zA-Z0-9""'\s-]*$")]
         [Required]
         [StringLength(100)]
         public string AliasName { get; set; }
 
         [Display(Name = "First Name")]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z]\-*$")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z-]*$")]
         [Required]
         [StringLength(50)]
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z]\-*$")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z-]\*$")]
         [Required]
         [StringLength(50)]
         public string LastName { get; set; }

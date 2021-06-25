@@ -20,9 +20,36 @@ namespace GardnerWebApplication.Controllers
         }
 
         // GET: Blogs
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchTitle, string searchAlias)
         {
-            return View(await _context.Blog.ToListAsync());
+            /*
+            //Use LINQ to get list of Titles
+            IQueryable<string> titleQuery = from m in _context.Blog
+                                            orderby m.Title
+                                            select m.Title;
+
+            //Use LINQ to get list of Titles
+            IQueryable<string> aliasQuery = from m in _context.Blog
+                                            orderby m.Alias
+                                            select m.Alias;
+            */
+            var blogs = from m in _context.Blog
+                        select m;
+
+            if (!String.IsNullOrEmpty(searchTitle))
+            {
+                blogs = blogs.Where(s => s.Title.Contains(searchTitle));
+            }
+            if (!String.IsNullOrEmpty(searchAlias))
+            {
+                blogs = blogs.Where(x => x.Alias.Contains(searchAlias));
+            }
+            var filterBlogVM = new FilterBlogsViewModel
+            {
+                Blogs = await blogs.ToListAsync()
+            };
+
+            return View(filterBlogVM);
         }
 
         // GET: Blogs/Details/5
